@@ -1,0 +1,87 @@
+{
+  "name": "usb-vpn-bridge-windows",
+  "version": "1.0.0-beta",
+  "description": "USB VPN Bridge Windows Desktop Client (Personal Beta)",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build:renderer": "tsc -b && vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build": "npm run build:renderer && npm run build:electron",
+    "package:win": "npm run build && electron-builder --win --x64",
+    "lint": "tsc --noEmit",
+    "start": "electron ."
+  },
+  "build": {
+    "appId": "com.usbvpnbridge.windows",
+    "productName": "USB VPN Bridge",
+    "copyright": "Copyright © 2026 USB VPN Bridge Project",
+    "directories": {
+      "output": "dist-package"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "assets/**/*",
+      "node_modules/@usb-vpn-bridge/**/*",
+      "node_modules/clsx/**/*",
+      "node_modules/lucide-react/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "bin",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "assets",
+        "to": "assets",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "USB-VPN-Bridge-Setup.${ext}",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "USB VPN Bridge",
+      "uninstallDisplayName": "USB VPN Bridge",
+      "runAfterFinish": false
+    }
+  },
+  "dependencies": {
+    "@usb-vpn-bridge/network-core": "file:../network-core",
+    "@usb-vpn-bridge/shared-protocol": "file:../shared-protocol",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.0",
+    "vite": "^6.1.0"
+  }
+}

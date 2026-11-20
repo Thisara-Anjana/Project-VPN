@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/connectioncontrol.tsx","./src/components/devicecard.tsx","./src/components/header.tsx","./src/components/logviewer.tsx","./src/components/netmodcard.tsx","./src/components/networkstatusrow.tsx","./src/components/settingsmodal.tsx","./src/components/statsgrid.tsx"],"version":"5.9.3"}

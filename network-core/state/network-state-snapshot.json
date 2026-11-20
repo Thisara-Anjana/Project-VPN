@@ -1,0 +1,22 @@
+{
+  "capturedAt": 1795117553254,
+  "timestampIso": "2026-11-19T19:45:53.254Z",
+  "primaryAdapterName": "Ethernet",
+  "primaryInterfaceIndex": 12,
+  "defaultIpv4Gateway": "192.168.8.1",
+  "defaultIpv4Metric": 35,
+  "existingDefaultRoutes": [
+    {
+      "destination": "0.0.0.0",
+      "netmask": "0.0.0.0",
+      "gateway": "192.168.8.1",
+      "interfaceIp": "192.168.8.192",
+      "interfaceIndex": 12,
+      "metric": 35,
+      "isDefaultRoute": true
+    }
+  ],
+  "dnsServers": {},
+  "activeVpnAdaptersFound": [],
+  "restorationStatus": "NOT_REQUIRED"
+}

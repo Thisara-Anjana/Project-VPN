@@ -1,0 +1,15 @@
+{
+  "name": "@usb-vpn-bridge/shared-protocol",
+  "version": "1.0.0",
+  "description": "Shared communication protocol and message contracts for USB VPN Bridge",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test dist/*.test.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}

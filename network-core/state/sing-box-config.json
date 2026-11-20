@@ -1,0 +1,102 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "remote-dns",
+        "type": "tcp",
+        "server": "1.1.1.1",
+        "server_port": 53,
+        "detour": "socks-out"
+      },
+      {
+        "tag": "local-dns",
+        "type": "local",
+        "detour": "direct-out"
+      }
+    ],
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "usb-vpn-tun",
+      "address": [
+        "172.19.0.1/30"
+      ],
+      "mtu": 1500,
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed",
+      "endpoint_independent_nat": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "socks",
+      "tag": "socks-out",
+      "server": "127.0.0.1",
+      "server_port": 10808,
+      "version": "5"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    },
+    {
+      "type": "block",
+      "tag": "block-out"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "default_domain_resolver": "local-dns",
+    "rules": [
+      {
+        "inbound": [
+          "tun-in"
+        ],
+        "action": "sniff"
+      },
+      {
+        "process_name": [
+          "adb.exe",
+          "sing-box.exe"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "ip_cidr": [
+          "127.0.0.0/8"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "ip_cidr": [
+          "192.168.8.1/32"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "ip_version": 6,
+        "outbound": "block-out"
+      },
+      {
+        "network": "udp",
+        "outbound": "block-out"
+      },
+      {
+        "network": "tcp",
+        "inbound": [
+          "tun-in"
+        ],
+        "outbound": "socks-out"
+      }
+    ]
+  }
+}

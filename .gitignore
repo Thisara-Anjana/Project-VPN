@@ -1,6 +1,8 @@
 # Build and OS files
 node_modules/
 dist/
+dist-electron/
+release/
 build/
 bin/
 *.exe

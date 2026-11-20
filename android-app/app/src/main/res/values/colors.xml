@@ -1,0 +1,20 @@
+<resources>
+    <color name="bg_dark">#090D16</color>
+    <color name="bg_card">#111827</color>
+    <color name="bg_card_inner">#0D1322</color>
+    <color name="border_subtle">#1E293B</color>
+
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_muted">#64748B</color>
+
+    <color name="accent_blue">#3B82F6</color>
+    <color name="accent_cyan">#06B6D4</color>
+    <color name="accent_emerald">#10B981</color>
+    <color name="accent_amber">#F59E0B</color>
+    <color name="accent_purple">#A855F7</color>
+    <color name="accent_rose">#F43F5E</color>
+
+    <color name="btn_disabled_bg">#1E293B</color>
+    <color name="btn_disabled_text">#64748B</color>
+</resources>

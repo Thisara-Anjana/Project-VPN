@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Top Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_shield"
+                    android:contentDescription="@string/app_name" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="USB Internet Sharing"
+                        android:textColor="@color/accent_cyan"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnSettings"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Battery Optimization &amp; Settings"
+                    android:src="@drawable/ic_settings" />
+            </LinearLayout>
+
+            <!-- Card 1: Connection & Tethering Hero Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Header Row: Title + Status Badge -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_usb"
+                            android:contentDescription="USB Connection" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:text="USB Tethering Engine"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/layoutPcStatusBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bg_card_inner"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="5dp">
+
+                            <View
+                                android:id="@+id/viewStatusDot"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginEnd="6dp"
+                                android:background="@drawable/dot_gray" />
+
+                            <TextView
+                                android:id="@+id/tvPcConnectionStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="USB Service Stopped"
+                                android:textColor="@color/text_muted"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Details Table -->
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp">
+
+                        <TableRow
+                            android:id="@+id/rowPcName"
+                            android:layout_marginBottom="4dp"
+                            android:visibility="gone">
+                            <TextView
+                                android:text="Connected PC"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvPcName"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:text="—" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/rowDuration"
+                            android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="Session Duration"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvConnectionDuration"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                android:text="00:00" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/rowHeartbeat"
+                            android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="Last Heartbeat"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvLastHeartbeat"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                android:text="Inactive" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/rowVpnStatus"
+                            android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="Active Android VPN"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvNetModStatus"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/accent_amber"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:text="Checking..." />
+                        </TableRow>
+                    </TableLayout>
+
+                    <!-- Status Description -->
+                    <TextView
+                        android:id="@+id/tvStatusDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Start the USB service on Android to accept Windows connections."
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Primary Action Button: Large Connect/Disconnect Toggle -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnServiceControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="Start USB Service"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@color/accent_blue"
+                        app:cornerRadius="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 2: Live Telemetry & Speed Counters -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Live Network Telemetry"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- 2x2 Telemetry Grid -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <!-- Download Speed -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_card_inner"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:layout_marginEnd="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="↓ Download Speed"
+                                android:textColor="@color/text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tvDownloadSpeed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0.00 KB/s"
+                                android:textColor="@color/accent_emerald"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- Upload Speed -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_card_inner"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="↑ Upload Speed"
+                                android:textColor="@color/text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tvUploadSpeed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0.00 KB/s"
+                                android:textColor="@color/accent_cyan"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Total Transferred Data -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_card_inner"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:layout_marginEnd="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Transferred"
+                                android:textColor="@color/text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tvTotalData"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0.00 MB"
+                                android:textColor="@color/text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- Active TCP Sockets -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_card_inner"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Active Sockets"
+                                android:textColor="@color/text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tvActiveSockets"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/accent_purple"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 3: Diagnostic Details & Device Info -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diagnostic Status"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TableRow android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="SOCKS5 Relay"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvProxyStatusBadge"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                android:text="127.0.0.1:10808 (Inactive)" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="Control Listener"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvControlStatus"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                android:text="127.0.0.1:10809" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="Device Hardware"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvDeviceModel"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                tools:text="Nothing A142" />
+                        </TableRow>
+
+                        <TableRow android:layout_marginBottom="4dp">
+                            <TextView
+                                android:text="Android OS"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvAndroidVersion"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="13sp"
+                                tools:text="Android 16 (API 36)" />
+                        </TableRow>
+
+                        <TableRow>
+                            <TextView
+                                android:text="Thermal Health"
+                                android:textColor="@color/text_muted"
+                                android:textSize="13sp" />
+                            <TextView
+                                android:id="@+id/tvThermalStatus"
+                                android:layout_marginStart="16dp"
+                                android:textColor="@color/accent_emerald"
+                                android:textSize="13sp"
+                                android:text="Normal" />
+                        </TableRow>
+                    </TableLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4: Activity Log -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Activity Log"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCopyLogs"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Copy"
+                            android:textColor="@color/accent_cyan"
+                            android:textSize="12sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnClearLogs"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Clear"
+                            android:textColor="@color/text_muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Scrollable Log Box -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@drawable/bg_log_container"
+                        android:padding="10dp">
+
+                        <ScrollView
+                            android:id="@+id/scrollLogs"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tvActivityLogs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="monospace"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="App initialized." />
+                        </ScrollView>
+                    </FrameLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

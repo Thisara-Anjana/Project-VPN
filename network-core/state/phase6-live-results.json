@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-11-19T08:28:11.671Z",
+  "preconditions": {
+    "directIp": "175.157.44.220",
+    "socksIp": "91.192.81.167"
+  },
+  "stateTransitions": [
+    {
+      "time": "2026-11-19T08:28:20.706Z",
+      "state": "DEVICE_DETECTED"
+    },
+    {
+      "time": "2026-11-19T08:28:20.754Z",
+      "state": "CONTROL_CONNECTING"
+    },
+    {
+      "time": "2026-11-19T08:28:20.816Z",
+      "state": "CONTROL_CONNECTED"
+    },
+    {
+      "time": "2026-11-19T08:28:20.816Z",
+      "state": "PROXY_CHECKING"
+    },
+    {
+      "time": "2026-11-19T08:28:21.591Z",
+      "state": "PROXY_READY"
+    },
+    {
+      "time": "2026-11-19T08:28:21.875Z",
+      "state": "TUN_STARTING"
+    },
+    {
+      "time": "2026-11-19T08:28:24.979Z",
+      "state": "TUN_ACTIVE"
+    },
+    {
+      "time": "2026-11-19T08:28:24.979Z",
+      "state": "INTERNET_VERIFYING"
+    },
+    {
+      "time": "2026-11-19T08:28:27.239Z",
+      "state": "INTERNET_CONNECTED"
+    },
+    {
+      "time": "2026-11-19T08:28:36.797Z",
+      "state": "DISCONNECTING"
+    },
+    {
+      "time": "2026-11-19T08:28:39.437Z",
+      "state": "DISCONNECTED"
+    }
+  ],
+  "egressVerification": {
+    "proxyEgressIp": "91.192.81.167",
+    "tunEgressIp": "91.192.81.167",
+    "matchesNetMod": true,
+    "state": "INTERNET_CONNECTED"
+  },
+  "progressiveTests": {
+    "browsing": {
+      "https://api.ipify.org": {
+        "success": true,
+        "latencyMs": 1243
+      },
+      "https://cloudflare.com/cdn-cgi/trace": {
+        "success": true,
+        "latencyMs": 838
+      },
+      "https://httpbin.org/ip": {
+        "success": true,
+        "latencyMs": 1476
+      }
+    },
+    "concurrent": {
+      "total": 4,
+      "allMatched": true,
+      "durationMs": 1670,
+      "responses": [
+        {
+          "idx": 1,
+          "success": true,
+          "ip": "91.192.81.167"
+        },
+        {
+          "idx": 2,
+          "success": true,
+          "ip": "91.192.81.167"
+        },
+        {
+          "idx": 3,
+          "success": true,
+          "ip": "91.192.81.167"
+        },
+        {
+          "idx": 4,
+          "success": true,
+          "ip": "91.192.81.167"
+        }
+      ]
+    },
+    "download": {
+      "bytes": 5242880,
+      "durationSec": 3.703,
+      "throughputMbps": 11.33,
+      "baselineComparison": "11.33 Mbps vs ~19 Mbps"
+    },
+    "resources": {
+      "singBoxMemoryMb": 62
+    }
+  },
+  "telemetry": {
+    "downloadSpeedBps": 0,
+    "uploadSpeedBps": 0,
+    "totalBytesReceived": 0,
+    "totalBytesSent": 0,
+    "sessionDurationSec": 9
+  },
+  "restoration": {
+    "postIp": "175.157.44.220",
+    "matchesBaseline": true
+  },
+  "errors": []
+}

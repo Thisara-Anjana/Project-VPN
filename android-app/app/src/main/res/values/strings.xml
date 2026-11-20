@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">USB VPN Bridge</string>
+    <string name="title_dashboard">USB VPN Bridge</string>
+    <string name="phase_badge">Phase 2: Foundation</string>
+
+    <!-- Device Info -->
+    <string name="header_device_info">Android Device</string>
+    <string name="label_device_model">Model</string>
+    <string name="label_android_os">Android Version</string>
+    <string name="label_manufacturer">Manufacturer</string>
+
+    <!-- Statuses -->
+    <string name="header_netmod_status">NetMod VPN Status</string>
+    <string name="status_not_verified">Not Verified</string>
+    <string name="netmod_desc">Egress verification and coexistence testing active in Phase 6.</string>
+
+    <string name="header_usb_status">USB Connection</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_device_detected">Standby (Phase 3)</string>
+
+    <!-- Controls -->
+    <string name="btn_start_tethering">Start Tethering</string>
+    <string name="tethering_disabled_hint">One-click tethering activates in Phase 4 once the socket relay service is integrated.</string>
+
+    <!-- Metrics -->
+    <string name="stat_download_speed">Download Speed</string>
+    <string name="stat_upload_speed">Upload Speed</string>
+    <string name="stat_total_data">Total Data</string>
+    <string name="placeholder_speed">0.00 KB/s</string>
+    <string name="placeholder_data">0.00 MB</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_id">usb_vpn_bridge_channel</string>
+    <string name="notification_channel_name">USB VPN Bridge Service</string>
+    <string name="notification_channel_desc">Active tethering relay background service</string>
+    <string name="notification_title">USB VPN Bridge Active</string>
+    <string name="notification_text">Background relay service running</string>
+</resources>
